@@ -1,120 +1,88 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { RESTAURANTE_INFO, TESTEMUNHOS } from "@/lib/data";
-import { MapPin, Clock, Phone, Navigation, Star, Car } from "lucide-react";
+import { RESTAURANTE_INFO } from "@/lib/data";
+import { MapPin, Clock, Phone, Navigation, Car } from "lucide-react";
 
 export function LocalizacaoHorarios() {
   return (
-    <section id="localizacao" className="py-16 sm:py-24 bg-[#0d0c0a] text-[#f5f3ef] relative border-t border-lusitano-border">
+    <section id="localizacao" className="py-16 sm:py-24 relative border-t transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Testemunhos */}
-        <div className="mb-20">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-            <span className="text-xs uppercase tracking-widest text-lusitano-gold font-bold">
-              Avaliações de Clientes
-            </span>
-            <h2 className="font-serif text-3xl font-black text-white">
-              A Escolha Diária em Leiria
-            </h2>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full surface-card border text-[#c59b27] text-xs font-bold uppercase tracking-widest">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>Fácil Acesso & Estacionamento</span>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTEMUNHOS.map((t, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-lusitano-surface border border-lusitano-border space-y-4">
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(t.estrelas)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-sm text-stone-300 italic leading-relaxed">
-                  "{t.texto}"
-                </p>
-                <div className="pt-2 border-t border-lusitano-border/60">
-                  <h4 className="font-bold text-sm text-white">{t.nome}</h4>
-                  <p className="text-xs text-stone-500">{t.cargo}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="optical-title font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-heading">
+            Onde Estamos & Horários
+          </h2>
+          <p className="optical-body text-body-muted text-sm sm:text-base">
+            Situado no Bloco 89 da Estrada da Estação em Leiria, com estacionamento facilitado à porta.
+          </p>
         </div>
 
-        {/* Localização & Horários Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Info Card */}
-          <div className="lg:col-span-6 bg-lusitano-surface border border-lusitano-border rounded-3xl p-8 space-y-6 flex flex-col justify-between">
-            <div className="space-y-6">
-              <div>
-                <span className="text-xs uppercase tracking-widest text-lusitano-gold font-bold">
-                  Onde Estamos
-                </span>
-                <h3 className="font-serif text-3xl font-black text-white mt-1">
-                  Localização & Horários
-                </h3>
-              </div>
-
+          {/* Card Informações */}
+          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
+            
+            <div className="surface-card border rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+              
               {/* Morada */}
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-lusitano-card border border-lusitano-border text-lusitano-gold shrink-0">
-                  <MapPin className="w-5 h-5" />
+                <div className="p-3 rounded-2xl surface-card-subtle border text-[#c59b27] shrink-0">
+                  <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-base">Morada</h4>
-                  <p className="text-stone-300 text-sm">{RESTAURANTE_INFO.morada}</p>
-                  <p className="text-stone-400 text-xs">{RESTAURANTE_INFO.codigoPostal} · {RESTAURANTE_INFO.cidade}</p>
-                  <p className="text-xs text-amber-300/80 mt-1 flex items-center gap-1">
-                    <Car className="w-3.5 h-3.5" />
-                    Junto à Estação de Comboios de Leiria · Fácil Estacionamento
-                  </p>
+                  <span className="text-[11px] font-bold text-[#c59b27] uppercase tracking-widest block">Morada</span>
+                  <h3 className="font-bold text-base text-heading">{RESTAURANTE_INFO.morada}</h3>
+                  <p className="text-xs text-body-muted mt-0.5">{RESTAURANTE_INFO.codigoPostal} · {RESTAURANTE_INFO.cidade}</p>
                 </div>
               </div>
 
-              {/* Horários */}
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-lusitano-card border border-lusitano-border text-lusitano-gold shrink-0">
-                  <Clock className="w-5 h-5" />
+              {/* Horário */}
+              <div className="flex items-start gap-4 pt-4 border-t border-black/10 dark:border-white/10">
+                <div className="p-3 rounded-2xl surface-card-subtle border text-[#c59b27] shrink-0">
+                  <Clock className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-base">Horário de Almoço</h4>
-                  <p className="text-stone-200 text-sm font-semibold text-emerald-400">
-                    Segunda a Sábado: 11h45 às 15h30
-                  </p>
-                  <p className="text-xs text-stone-400 mt-0.5">
-                    Serviço de Almoço de Sala & Take-Away
-                  </p>
+                  <span className="text-[11px] font-bold text-[#c59b27] uppercase tracking-widest block">Horário de Funcionamento</span>
+                  <h3 className="font-bold text-base text-heading">{RESTAURANTE_INFO.horarioAlmoco}</h3>
+                  <p className="text-xs text-body-muted mt-0.5">Segunda a Sábado exclusivamente para Almoços</p>
+                  <p className="text-xs font-semibold text-rose-500 mt-1">Domingo: Encerrado</p>
                 </div>
               </div>
 
-              {/* Contactos */}
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-lusitano-card border border-lusitano-border text-lusitano-gold shrink-0">
-                  <Phone className="w-5 h-5" />
+              {/* Contacto */}
+              <div className="flex items-start gap-4 pt-4 border-t border-black/10 dark:border-white/10">
+                <div className="p-3 rounded-2xl surface-card-subtle border text-[#c59b27] shrink-0">
+                  <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-base">Contacto Telefónico</h4>
+                  <span className="text-[11px] font-bold text-[#c59b27] uppercase tracking-widest block">Telefone Direto</span>
                   <a
                     href={`tel:${RESTAURANTE_INFO.telefone.replace(/\s/g, "")}`}
-                    className="text-lg font-bold text-lusitano-goldLight hover:underline block"
+                    className="font-bold text-lg text-heading hover:text-[#c59b27] transition-colors"
                   >
                     {RESTAURANTE_INFO.telefone}
                   </a>
-                  <p className="text-xs text-stone-400">Chamada para a rede móvel nacional</p>
+                  <p className="text-xs text-body-muted mt-0.5">Atendimento rápido para reservas e encomendas</p>
                 </div>
               </div>
+
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="pt-6 border-t border-lusitano-border grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Botões de Navegação GPS */}
+            <div className="grid grid-cols-2 gap-3">
               <a
                 href={RESTAURANTE_INFO.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-lusitano-card hover:bg-[#26231f] text-stone-200 py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold border border-lusitano-border transition-colors"
+                className="apple-button flex items-center justify-center gap-2 p-3.5 rounded-2xl surface-card border text-xs font-bold text-heading shadow-md hover:border-[#c59b27]"
               >
-                <Navigation className="w-4 h-4 text-blue-400" />
+                <Navigation className="w-4 h-4 text-sky-500" />
                 <span>Google Maps</span>
               </a>
 
@@ -122,43 +90,35 @@ export function LocalizacaoHorarios() {
                 href={RESTAURANTE_INFO.wazeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-lusitano-card hover:bg-[#26231f] text-stone-200 py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold border border-lusitano-border transition-colors"
+                className="apple-button flex items-center justify-center gap-2 p-3.5 rounded-2xl surface-card border text-xs font-bold text-heading shadow-md hover:border-[#c59b27]"
               >
-                <Navigation className="w-4 h-4 text-cyan-400" />
-                <span>Navegar no Waze</span>
+                <Car className="w-4 h-4 text-indigo-500" />
+                <span>Abrir no Waze</span>
               </a>
             </div>
+
           </div>
 
-          {/* Interactive Card */}
-          <div className="lg:col-span-6 rounded-3xl bg-lusitano-surface border border-lusitano-border overflow-hidden relative shadow-2xl flex flex-col justify-between p-8 text-center">
-            <div className="relative w-20 h-20 mx-auto rounded-xl overflow-hidden border border-lusitano-gold/50 shadow-md bg-black">
-              <Image
-                src="/logo-lusitano.jpg"
-                alt="Restaurante Lusitano"
-                fill
-                className="object-cover"
-              />
-            </div>
+          {/* Interactive Map Embed */}
+          <div className="lg:col-span-7">
+            <div className="surface-card border rounded-3xl overflow-hidden shadow-2xl h-full min-h-[380px] relative">
+              <iframe
+                title="Mapa Restaurante Lusitano"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.307221054366!2d-8.8189876!3d39.7554959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd227310e53a27f7%3A0x4a0ff46d814cfd2!2sEstrada%20da%20Esta%C3%A7%C3%A3o%2C%20Leiria!5e0!3m2!1spt-PT!2spt!4v1700000000000!5m2!1spt-PT!2spt"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "380px" }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
 
-            <div className="space-y-2 my-6">
-              <h4 className="font-serif font-bold text-2xl text-white">
-                Restaurante Lusitano Leiria
-              </h4>
-              <p className="text-xs sm:text-sm text-stone-400 max-w-md mx-auto leading-relaxed">
-                Localizado na Estrada da Estação 89 R/C, com acessos rápidos a partir da IC2, A19 e centro de Leiria.
-              </p>
+              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-2xl surface-card border backdrop-blur-md flex items-center justify-between text-xs shadow-lg">
+                <span className="font-semibold text-heading">Estrada da Estação - Bloco 89 R/C, Leiria</span>
+                <span className="text-[#c59b27] font-bold">Tel: {RESTAURANTE_INFO.telefone}</span>
+              </div>
             </div>
-
-            <a
-              href={RESTAURANTE_INFO.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-lusitano-gold to-lusitano-goldLight text-stone-950 font-black px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg hover:brightness-110 transition-all w-full max-w-sm mx-auto"
-            >
-              <MapPin className="w-4 h-4" />
-              <span>Ver Rota no Google Maps</span>
-            </a>
           </div>
 
         </div>

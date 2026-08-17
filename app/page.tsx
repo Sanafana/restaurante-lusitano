@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { VariantSwitcher, DesignVariant } from "@/components/VariantSwitcher";
+import { ThemeProvider } from "@/components/ThemeContext";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { PratosDoDia } from "@/components/PratosDoDia";
@@ -12,32 +11,18 @@ import { LocalizacaoHorarios } from "@/components/LocalizacaoHorarios";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
-  const [variant, setVariant] = useState<DesignVariant>("taberna");
-
-  // Define dynamic theme classes based on variant
-  const getThemeWrapperClass = () => {
-    switch (variant) {
-      case "bistro":
-        return "theme-bistro bg-[#fcfaf6] text-stone-900";
-      case "express":
-        return "theme-express bg-[#18181b] text-zinc-100";
-      case "taberna":
-      default:
-        return "theme-taberna bg-[#0d0c0a] text-[#f5f3ef]";
-    }
-  };
-
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${getThemeWrapperClass()}`}>
-      <VariantSwitcher currentVariant={variant} onSelectVariant={setVariant} />
-      <Navbar />
-      <Hero />
-      <PratosDoDia />
-      <TakeawaySimulator />
-      <Especialidades />
-      <InstagramSection />
-      <LocalizacaoHorarios />
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <main className="min-h-screen selection:bg-[#c59b27] selection:text-black">
+        <Navbar />
+        <Hero />
+        <PratosDoDia />
+        <TakeawaySimulator />
+        <Especialidades />
+        <InstagramSection />
+        <LocalizacaoHorarios />
+        <Footer />
+      </main>
+    </ThemeProvider>
   );
 }
