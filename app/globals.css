@@ -146,3 +146,119 @@
     transform: none !important;
   }
 }
+
+/* =========================================================
+   FOUR-DIRECTION DESIGN SELECTOR
+   The original remains untouched; the other directions are
+   applied as a visual skin over the same restaurant content.
+   ========================================================= */
+.design-canvas {
+  --design-accent: #c59b27;
+  min-height: 100vh;
+  transition: background-color 350ms ease, color 350ms ease;
+}
+
+.design-switcher {
+  position: relative;
+  z-index: 70;
+  background: #11100e;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.design-switcher__inner {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.design-switcher__intro { min-width: 150px; line-height: 1.15; }
+.design-switcher__intro strong { display: block; font-family: Georgia, serif; font-size: 15px; }
+.design-switcher__eyebrow { display: block; margin-bottom: 5px; color: #c9a747; font-size: 9px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.design-switcher__options { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 8px; flex: 1; }
+.design-switcher__button { position: relative; min-height: 52px; display: flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid #35322e; border-radius: 10px; color: #c9c5be; background: #1b1916; text-align: left; transition: 160ms ease; }
+.design-switcher__button:hover { border-color: #726652; color: #fff; transform: translateY(-1px); }
+.design-switcher__button[aria-pressed="true"] { color: #16130d; border-color: #d2ad46; background: #d2ad46; box-shadow: 0 6px 20px rgba(0,0,0,.24); }
+.design-switcher__number { font: 700 9px/1 sans-serif; opacity: .55; }
+.design-switcher__icon { width: 16px; height: 16px; flex: none; }
+.design-switcher__copy { display: block; min-width: 0; }
+.design-switcher__copy strong, .design-switcher__copy small { display: block; white-space: nowrap; }
+.design-switcher__copy strong { font-size: 12px; }
+.design-switcher__copy small { margin-top: 2px; font-size: 9px; opacity: .66; }
+.design-switcher__check { width: 14px; height: 14px; margin-left: auto; flex: none; }
+
+/* 02 — a nocturnal, cinematic dining-room created for Lusitano. */
+[data-design="atelier"] {
+  --design-accent: #ff6b35;
+  background: #15110f;
+}
+[data-design="atelier"] .theme-light,
+[data-design="atelier"] .theme-dark { background: #15110f; color: #f9eee5; }
+[data-design="atelier"] .apple-glass { background: rgba(21,17,15,.9); border-color: #3d2d25; }
+[data-design="atelier"] .surface-card { background: #211915; border-color: #463229; color: #f9eee5; box-shadow: 0 22px 70px rgba(0,0,0,.18); }
+[data-design="atelier"] .surface-card-subtle { background: #2a1f1a; border-color: #4d362c; }
+[data-design="atelier"] .text-heading { color: #fff8f1; }
+[data-design="atelier"] .text-body-muted { color: #c9b7aa; }
+[data-design="atelier"] .text-\[\#c59b27\] { color: #ff7a45 !important; }
+[data-design="atelier"] section { border-color: #352720; }
+[data-design="atelier"] section:first-of-type { min-height: 720px; display: flex; align-items: center; background: radial-gradient(circle at 75% 30%, rgba(255,107,53,.19), transparent 35%), linear-gradient(135deg,#15110f 45%,#271712); }
+[data-design="atelier"] h1, [data-design="atelier"] h2, [data-design="atelier"] h3 { font-style: italic; }
+[data-design="atelier"] .rounded-2xl { border-radius: 6px; }
+[data-design="atelier"] .rounded-3xl { border-radius: 10px; }
+[data-design="atelier"] img { filter: saturate(.85) contrast(1.08); }
+
+/* 03 — restrained Swiss/editorial direction with ink and olive. */
+[data-design="editorial"] {
+  --design-accent: #254f3c;
+  background: #f0eee7;
+}
+[data-design="editorial"] .theme-light,
+[data-design="editorial"] .theme-dark { background: #f0eee7; color: #18201c; }
+[data-design="editorial"] .apple-glass { background: rgba(240,238,231,.94); border-color: #1d2b25; backdrop-filter: blur(14px); }
+[data-design="editorial"] .surface-card { background: transparent; border-color: #a6aaa1; color: #18201c; box-shadow: none; }
+[data-design="editorial"] .surface-card-subtle { background: #e4e2d9; border-color: #bbc0b7; }
+[data-design="editorial"] .text-heading { color: #15241d; }
+[data-design="editorial"] .text-body-muted { color: #56615b; }
+[data-design="editorial"] .text-\[\#c59b27\] { color: #285641 !important; }
+[data-design="editorial"] section { border-color: #aeb2aa; }
+[data-design="editorial"] section > div { max-width: 86rem; }
+[data-design="editorial"] h1, [data-design="editorial"] h2, [data-design="editorial"] h3, [data-design="editorial"] .font-serif { font-family: Arial, Helvetica, sans-serif; letter-spacing: -.045em; }
+[data-design="editorial"] h1 { text-transform: uppercase; line-height: .9; }
+[data-design="editorial"] h2 { text-align: left; text-transform: uppercase; }
+[data-design="editorial"] section:first-of-type { background: linear-gradient(90deg,#dadfd4 0 28%,transparent 28%); }
+[data-design="editorial"] .rounded-xl, [data-design="editorial"] .rounded-2xl, [data-design="editorial"] .rounded-3xl { border-radius: 0; }
+[data-design="editorial"] .apple-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 #285641; }
+[data-design="editorial"] img { filter: grayscale(.25); }
+
+/* 04 — optimistic graphic direction, inspired by modern food brands. */
+[data-design="vibrante"] {
+  --design-accent: #e9422e;
+  background: #fff4d8;
+}
+[data-design="vibrante"] .theme-light,
+[data-design="vibrante"] .theme-dark { background: #fff4d8; color: #182861; }
+[data-design="vibrante"] .apple-glass { background: rgba(255,244,216,.94); border-color: #182861; }
+[data-design="vibrante"] .surface-card { background: #fffaf0; border-color: #182861; color: #182861; box-shadow: 4px 4px 0 #182861; }
+[data-design="vibrante"] .surface-card-subtle { background: #ffd95a; border-color: #182861; }
+[data-design="vibrante"] .text-heading { color: #182861; }
+[data-design="vibrante"] .text-body-muted { color: #4d587d; }
+[data-design="vibrante"] .text-\[\#c59b27\] { color: #e9422e !important; }
+[data-design="vibrante"] section { border-color: #182861; }
+[data-design="vibrante"] section:first-of-type { background: radial-gradient(circle at 15% 25%,#ffcf3f 0 10%,transparent 10.2%),radial-gradient(circle at 90% 75%,#f06f58 0 12%,transparent 12.2%); }
+[data-design="vibrante"] h1, [data-design="vibrante"] h2, [data-design="vibrante"] h3 { font-family: Arial Black, Arial, sans-serif; letter-spacing: -.04em; }
+[data-design="vibrante"] .rounded-xl { border-radius: 18px; }
+[data-design="vibrante"] .rounded-2xl { border-radius: 24px; }
+[data-design="vibrante"] .rounded-3xl { border-radius: 34px; }
+[data-design="vibrante"] .apple-card:hover { transform: rotate(-1deg) translateY(-4px); box-shadow: 8px 8px 0 #e9422e; }
+[data-design="vibrante"] img { filter: saturate(1.25); }
+
+@media (max-width: 850px) {
+  .design-switcher__inner { width: 100%; padding: 10px 12px; display: block; }
+  .design-switcher__intro { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .design-switcher__eyebrow { margin: 0; }
+  .design-switcher__options { display: flex; overflow-x: auto; padding-bottom: 2px; }
+  .design-switcher__button { min-width: 142px; }
+}
